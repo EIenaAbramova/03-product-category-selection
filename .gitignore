@@ -4,4 +4,4 @@ __pycache__/
 *.pyc
 .venv/
 outputs/workbook_data.json
-ozon-solution.zip
+03-solution.zip
