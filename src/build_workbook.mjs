@@ -13,7 +13,7 @@ const blue='#005BFF'; const dark='#20334D';
 function base(s,range){s.showGridLines=false;s.getRange(range).format.font={name:'Arial',size:10,color:dark};s.getRange(range).format.rowHeight=23;s.getRange(range).format.verticalAlignment='center';}
 function title(s,text,last){s.getRange('A2').values=[[text]];s.getRange('A2').format.font={name:'Arial',size:16,bold:true,color:dark};s.getRange(`A3:${last}3`).format.borders={bottom:{style:'thin',color:'#CFD9E5'}};}
 function header(s,range){s.getRange(range).format={fill:dark,font:{name:'Arial',size:10,bold:true,color:'#FFFFFF'},wrapText:true,horizontalAlignment:'center',verticalAlignment:'center',rowHeight:46};}
-base(summary,'A1:H25');summary.tabColor=blue; title(summary,'Ozon  Выбор категорий','H');
+base(summary,'A1:H25');summary.tabColor=blue; title(summary,'03  Выбор категорий','H');
 summary.getRange('A4').values=[['Период: 03.07.2024–30.07.2024. Сумма заказов используется как показатель выручки.']];
 summary.getRange('A5:F5').values=[['ДРР ≤',.03,'Доля >1 млн ≥',.10,'Товаров ≥',30]];
 for(const addr of ['B5','D5']){summary.getRange(addr).format.numberFormat='0.0%';summary.getRange(addr).format.fill='#FFF2CC';}
@@ -42,7 +42,7 @@ summary.getRange(`A8:A${d.selectedCount+7}`).format.wrapText=true;summary.getRan
 summary.getRange('A20').values=[['Пороги в жёлтых ячейках можно менять. Полный список фильтруйте на листе Категории.']];
 summary.getRange('A21').values=[['Состав короткого списка фиксирован для базового отбора; для нового списка перезапустите анализ.']];
 summary.getRange('A22').values=[['Доля лидера — часть заказов категории у крупнейшего продавца в этой выборке.']];
-summary.getRange('A23').values=[['Источник содержит ТОП товаров. Результаты описывают выгрузку, а не весь рынок Ozon.']];
+summary.getRange('A23').values=[['Источник содержит ТОП товаров. Результаты описывают выгрузку, а не весь рынок 03.']];
 summary.getRange('A:A').format.columnWidth=54;summary.getRange('B:H').format.columnWidth=17;
 base(products,`A1:J${d.products.length+5}`);title(products,'Примеры товаров для проверки поставки','J');
 products.getRange('A4').values=[['Исторические примеры: заказы >1 млн ₽, ДРР ≤3%. Строка указывает на исходный Excel.']];
@@ -76,5 +76,5 @@ for(const [s,r] of [['Итоги','A1:H18'],['Категории','D4:P12'],['Т
  const preview=await wb.render({sheetName:s,range:r,scale:1.5,format:'png'});
  await fs.writeFile(path.join(root,'qa',s+'.png'),new Uint8Array(await preview.arrayBuffer()));
 }
-const out=await SpreadsheetFile.exportXlsx(wb);await out.save(path.join(root,'outputs','Ozon_анализ.xlsx'));
+const out=await SpreadsheetFile.exportXlsx(wb);await out.save(path.join(root,'outputs','03_анализ.xlsx'));
 console.log('Workbook exported');

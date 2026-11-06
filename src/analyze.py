@@ -1,4 +1,4 @@
-"""Ozon category analysis. Python 3.11+; run from any directory."""
+"""03 category analysis. Python 3.11+; run from any directory."""
 from pathlib import Path
 import argparse, hashlib, json, gzip
 import pandas as pd

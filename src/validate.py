@@ -26,7 +26,7 @@ for r in result:
     if a[0]>=30 and a[3]/a[2]<=.03 and a[1]/a[0]>=.1:selected.append(r['cat4'])
 assert len(selected)==10
 assert sum(a[1] for a in agg.values())==1476
-book=ROOT/'outputs/Ozon_анализ.xlsx'
+book=ROOT/'outputs/03_анализ.xlsx'
 wb=openpyxl.load_workbook(book,read_only=True,data_only=True)
 ws=wb['Источник']
 assert ws['B20'].value==300000 and ws['B21'].value==1476
